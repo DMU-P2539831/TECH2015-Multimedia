@@ -8,8 +8,23 @@ header{
 
 }
 
-div{
+.OpeningContainer{
   font-size: 10pt;
   font-family: cursive;
+}
 
+.HomepageImages{
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   padding: 2em;
+
+
+}
+
+img{
+  height: 14vh;
+border-radius: 8px;
+display: inline-grid;
 }
