@@ -1,5 +1,6 @@
 body {
 background-color:#f4ecdd;
+margin: 1em;
 }
 
 header{
@@ -11,6 +12,7 @@ header{
 .OpeningContainer{
   font-size: 10pt;
   font-family: cursive;
+  font-weight: bold;
 }
 
 .HomepageImages{
@@ -18,13 +20,13 @@ header{
    justify-content: center;
    align-items: center;
    flex-wrap: wrap;
-   padding: 2em;
 
 
 }
 
 img{
-  height: 14vh;
+  height: 16vh;
 border-radius: 8px;
 display: inline-grid;
+margin: 0.2em;
 }
