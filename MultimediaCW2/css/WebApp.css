@@ -4,12 +4,83 @@ margin: 0.6em;
 }
 
 header{
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: bolder;
+  font-size: 1.2em;
+}
+
+#BurgerMenuDefault {
+  height: 5vh;
+  position: relative;
+  right: calc(90vw - 5px);
+  background-color: rgba(244, 236, 221, 0.6);
+  padding: 5px;
+    border-radius: 3px;
+}
+
+nav {
+  text-align: right;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  padding: 20px;
+  left: 90vw;
+    transition: left 0.4s, background-color 0.4s;
+}
+
+nav.active {
+  left: 0vw;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+nav.active #BurgerMenuDefault {
+  right: calc(90vw - 25px);
+  background-color: rgba(244, 236, 221, 0);
+}
+
+
+.menuItem {
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  font-size: 1.5em;
+  color: white;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+}
+
+
+@media screen and (min-width: 800px){
+  .menuItem {
+      color: black;
+      font-size: 1.2em;
+      width: auto;
+      text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+      font-weight: bolder;
+  }
+  #BurgerMenuDefault {
+    display: none;
+  }
+  #mainMenu {
+  position: relative;
+  height: auto;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+}
+
+.OpeningContainer{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2em;
 
 }
 
-img {
+.GalleryImg {
   border-radius: 9px;
 }
 
@@ -26,7 +97,7 @@ img {
   padding: 0 4px;
 }
 
-/* Create four equal columns that sits next to each other */
+/* Creates four equal columns that sit next to each other */
 .column {
   -ms-flex: 25%; /* IE10 */
   flex: 25%;
