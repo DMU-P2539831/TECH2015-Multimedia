@@ -3,11 +3,23 @@ background-color:#f4ecdd;
 margin: 0.6em;
 }
 
+.dark-mode {
+  background-color: #181615;
+  color: white;
+}
+
 header{
   font-family: 'Open Sans', sans-serif;
   font-weight: bolder;
   font-size: 1.2em;
 }
+
+#DarkMode {
+  height: 5vh;
+  float: right;
+  margin-right: 10px;
+}
+
 
 #BurgerMenuDefault {
   height: 5vh;
