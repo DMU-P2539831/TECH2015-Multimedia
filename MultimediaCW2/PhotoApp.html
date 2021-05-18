@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="css/PhotoApp.css" rel="stylesheet" type="text/css">
+<!-- The font below is used for Titles/Headings -->
+          <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<!-- The font below is used for Main body text -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+      <!-- JQUERY LINK -->
+      <script src="jquery.js"></script>
+
+
+
+
+    <title></title>
+    </head>
+  <body>
+ <header>
+   <h1> PHOTOGENIC <h1>
+   </header>
+
+   <nav id="mainMenu">
+     <img id="BurgerMenuDefault" src="icons/BurgerMenuDefault.png" alt="">
+     <a class="menuItem" href="PhotoApp.html">HOME</a>
+     <a class="menuItem" href="MeetThePhotographer.html">MEET THE PHOTOGRAPHER</a>
+     <a class="menuItem" href="https://linktr.ee/P2539831">LINKTREE</a>
+   </nav>
+
+<img id="DarkMode" onclick="myFunction()" src="icons/DarkMode.png" alt="">
+
+
+<div class="OpeningContainer">
+<p>Welcome!<br> Here are some photos for your viewing pleasure!♥ <br> click or tap to expand!</p>
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">▲</button>
+
+
+<div class="PopOut">
+  <button id="BtnPopOut" title="Close">X</button>
+  <h2 id="PhotoTitle">PHOTO TITLE</h2>
+  <img class="PopOutImg">
+  <p class="Title"> DATE:</p>
+  <p class="Subset" id="Date"> Date of photo </p>
+  <p class="Title" >LOCATION:</p>
+  <p class="Subset" id="Location"> Place of photo </p>
+  <p class="Title" >CAMERA:</p>
+  <p class="Subset" id="Camera"> Camera of photo </p>
+  <h3 class="Subtitle"> ---- PROPERTIES ---- </h3>
+  <p class="Title" >F-STOP: </p>
+  <p class="Subset" id="FStop"> F-stop of photo </p>
+  <p class="Title" >EXPOSURE TIME:</p>
+  <p class="Subset" id="ExposureTime"> Exposure Time of photo </p>
+  <p class="Title" >ISO SPEED: </p>
+  <p class="Subset" id="IsoSpeed"> ISO Speed of photo </p>
+  <p class="Title" > EXPOSURE BIAS:</p>
+  <p class="Subset" id="ExposureBias"> Exposure Bias of photo </p>
+  <p class="Title" >FOCAL LENGTH: </p>
+  <p class="Subset" id="FocalLength"> Focal Length of photo </p>
+  <p class="Title" >MAX APERTURE: </p>
+  <p class="Subset" id="MaxAperture"> Max Aperture of photo </p>
+  <p class="Title" >METRERING MODE: </p>
+  <p class="Subset" id="MeteringMode"> Metring Mode of photo </p>
+  <p class="Title" >FLASH MODE: </p>
+  <p class="Subset" id="FlashMode"> Flash Mode of photo </p>
+  <div class="DescriptionDiv">
+    <h3 class="Subtitle"> ---- DESCRIPTION ---- </h3>
+    <p class="Subset" id="Description" >Heres some words about the photo </p>
+  </div>
+</div>
+
+<!-- Photo Gallery Grid (This is loaded in through Java Script which can be found below )-->
+<div class="row">
+</div>
+
+
+<script>
+// burger menu script
+  toggleMenu = () => {
+    let menu = document.getElementById("mainMenu");
+      let img = document.getElementById("BurgerMenuDefault");
+    if (menu.classList.contains("active")) {
+      menu.classList.remove("active");
+      img.src= "icons/BurgerMenuDefault.png";
+    } else {
+      menu.classList.add("active");
+      img.src="icons/BurgerMenuOpenWhite.png";
+    }
+  };
+
+  document.getElementById("BurgerMenuDefault").addEventListener("click", toggleMenu);
+
+//Dark Mode
+  function myFunction() {
+     var element = document.body;
+     element.classList.toggle("dark-mode");
+     $(".menuitem").toggle("dark-mode");
+  }
+
+  //Back To Top Button
+  //Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 600px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
+//Image individual pop out or modal / lightbox gallery
+//this fetches data assigned to all the displayed photos, $(this) is what determines which photo has been clciked and what corrsponding data to fetch and display
+$(".PopOut").hide();
+
+$(".row").on('click', '.GalleryImg', function(){
+  var value = $(this).val();
+  console.log(value);
+  var popOut = $(".PopOut");
+  $(popOut).find("#PhotoTitle").text(imageData.title[value]);
+  $(popOut).find("img").attr("src","img/" + imageData.img[value] + ".jpg");
+  $(popOut).find("#Date").text(imageData.date[value]);
+  $(popOut).find("#Location").text(imageData.location[value]);
+  $(popOut).find("#Camera").text(imageData.camera[value]);
+  $(popOut).find("#FStop").text(imageData.FStop[value]);
+  $(popOut).find("#ExposureTime").text(imageData.ExposureTime[value]);
+  $(popOut).find("#IsoSpeed").text(imageData.IsoSpeed[value]);
+  $(popOut).find("#ExposureBias").text(imageData.ExposureBias[value]);
+  $(popOut).find("#FocalLength").text(imageData.FocalLength[value]);
+  $(popOut).find("#MaxAperture").text(imageData.MaxAperture[value]);
+  $(popOut).find("#FlashMode").text(imageData.FlashMode[value]);
+
+//this says that if there is no information displayed below in the 'description' section to not display that at all
+  var description = imageData.Description[value];
+  if (description === ""){
+    $(popOut).find(".DescriptionDiv").hide();
+  }
+  else{
+    $(popOut).find("#Description").text(description);
+    $(popOut).find(".DescriptionDiv").show();
+  }
+  $(".PopOut").show();
+});
+
+
+
+$(".PopOut").on('click', '#BtnPopOut', function(){
+  $(".PopOut").hide();
+});
+
+/* Array To get and display photos and their data - more automated */
+//Each category (img, title, date, location etc) can be found on the left hand side of this multi-array and is is storing information (and pulling and displaying when told to).
+//data in 'x' position corresponds to the photo in that position eg the first image 'img/comp/IMG_1284' has its data stored in the first section of every category. Mkaing its title 'Migratory Curve' and its date taken 04.08.2020 and so on.
+//this is similar to using a data base but with Java Script / Jquery - this approach was used t try to keep everything in one place and be more managable than so many separate /individual web pages or even elements within these documents full of information etc
+  var imageData = {
+    'img' : ['imgcomp/IMG_1284','imgcomp/IMG_1689jpg','imgcomp/IMG_4388','imgcomp/IMG_4273','imgcomp/BirdBranch2','imgcomp/[003185]','imgcomp/Owl','imgcomp/IMG_1280','imgnoncomp/Mamoset','imgcomp/[003187]','imgcomp/[003166]',
+    'imgnoncomp/IMG_1613jpg','imgcomp/[002940]','imgcomp/BirdBranch','imgcomp/IMG_1715jpg','imgcomp/[000669]','imgnoncomp/IMG_2929','imgcomp/IMG_0557','imgcomp/IMG_4365','imgcomp/Plants','imgcomp/[000651]','imgcomp/IMG_1706jpg','imgcomp/IMG_1353','imgcomp/[000665]','imgnoncomp/IMG_3029','imgnoncomp/IMG_7885','imgcomp/IMG_1688jpg','imgnoncomp/IMG_2913','imgcomp/[000664]','imgcomp/[000663]','imgcomp/IMG_2019'],
+    'title' : ['MIGRATORY CURVE', 'VIRIDESCENT','ROOFTOPS', 'MATING CALL','PERCH', 'MOTOR SKILLS','WISE EYES', 'WINGSPAN','MAMOSET', 'PERCH OF A PELICAN','STONE NEST', 'DREAMERS EYE','COVERAGE', 'SMALL ONLOOKER','DRIED GRASS', 'IVY','AUTUMNAL', 'RIPPLING','SUNSET HOME', 'GREENERY','RIVER LIFE', 'WITHERED','RED SLEEPER', 'WELL WATERED','CURIOUS DEER', 'OVERGROWN RIVER','OVERGROW', 'MELLOW YELLOW','NATURAL SPRITZ', 'GREENHOUSE', 'NIGHTOWL'],
+    'date' : ['04.08.2020 13:49', '22.01.2020 16:13','25.04.2021 17:25', '25.04.2021 17:23','19.04.2021 13:40', '20.08.2020','19.04.2021 13:40', '04.08.2020 13:55','19.04.2021 10:40', '20.08.2020','22.08.2020', '22.01.2020 13:13','28.07.2019', '19.04.2021 13:38','22.01.2020 14:05', '28.07.2019','22.10.2020', '17.06.2019','25.04.2021 17:25', '19.04.2021 13:50','22.10.2020', '22.01.2020 16:17','08.08.2020', '28.07.2019','25.10.2020', '29.07.2020 15:07','22.01.2020 16:12', '22.10.2020 15:06','28.07.2019', '28.07.2019', '22.09.2020 11:50', '22.09.2020 11:50'],
+    'location' : ['Abington Park, Northamptonshire', 'Castle Gardens, Leicestershire','Northamptonshire', 'Northamptonshire','Hamerton', 'Cornwall','Hamerton', 'Abington Park, Northamptonshire','Hamerton', 'Cornwall','Stonghenge, Wiltshire', 'Castle Gardens, Leicestershire','Kew Gardens, London', 'Hamerton','Castle Gardens, Leicestershire', 'Kew Gardens, London','Northamptonshire', 'Northamptonshire','Northamptonshire', 'Hamerton','Northamptonshire', 'Castle Gardens, Leicestershire','The Cotswolds', 'Kew Gardens, London','Bradgate Park, Leicestershire', 'Northamptonshire','Castle Gardens, Leicestershire', 'Northamptonshire','', 'Kew Gardens, London', 'Kew Gardens, London', 'Cornwall', 'Cornwall'],
+    'camera' : ['Canon PowerShot sx400 IS', 'Canon EOS 700D','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon EOS 700D','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon EOS 700D', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon EOS 700D','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS','Canon EOS 700D', 'Canon PowerShot sx400 IS','Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS', 'Canon PowerShot sx400 IS'],
+    'FStop' : ['f/8', 'f/5.6','f/5', 'f/5.6','f5.8', 'f/5','f5.6', 'f/8','f/5', 'f/5.6','f/5', 'f/5.6','f/2.4', 'f/5.6','f/5.6', 'f/1.8','f/4', 'f/5.6','f/5.6', 'f/4','f/5', 'f/5.6','f/5.6', 'f/5.6','F/5.6', 'f/1.8','f/5.6', 'f/4','f/5.6', 'F/5.6', 'F/5.6', 'F/5.6'],
+    'ExposureTime' : ['1/6000 sec.', '1/80 sec.','1/125 sec.', '1/320 sec.','1/125 sec.', '1/80 sec','1/250 sec.', '1/1600 sec.','1/320 sec', '1/640 sec.','1/400 sec', '1/4000 sec','1/104 sec.', '1/100 sec','1/80 sec', '1/121 sec','1/320 sec', '1/250 sec.','1/100 sec', '1/500 sec','1/100 sec', '1/100 sec','1/250 sec', '1/100 sec','1/160 sec', '1.495 sec','1/640 sec', '1/100s sec','1/250 sec', '1/100 sec', '1/100 sec', '1/100 sec'],
+    'IsoSpeed' : ['ISO-100', 'ISO-160','ISO-100', 'ISO-100','ISO-200', 'ISO-160','IS0-100', 'ISO-100','ISO-100', 'ISO-100','ISO-100', 'ISO-12800','ISO-125', 'ISO-125','ISO-100', 'ISO-100','ISO-100', 'ISO-400','ISO-250', 'ISO-100','ISO-100', 'ISO-100','ISO-100', 'ISO-100','ISO-100', 'ISO-25','ISO-250', 'ISO-100','ISO-100', 'ISO-100', 'ISO-320', 'ISO-320'],
+    'ExposureBias' : ['-1 Step', '0 step','-0.7 step', '-0.7 step','-0.7 step','0 step','0 step', '-1 step','-0.7 step', '-1.7 step','0 step', '0 step','0 step', '-0.7 step','0 step', '-0.6 step','-0.3 step', '0 step','-0.7 step', '-0.7 step','0 step', '+0 step','1 step', '0 step','-1 step', '0 step','0 step', '-0.3 step','-1 step', '-1 step', '-1 step', '-1 step'],
+    'FocalLength' : ['10mm', '50mm','24mm', '89mm','129mm', '89mm','26mm','26mm','11mm', '67mm','20mm', '50mm','6mm', '70mm','50mm', '4mm','6mm','29mm','48mm', '6mm','14mm', '50mm','47mm', '10mm','35mm', '4mm','50mm','4mm','10mm', '8mm', '63mm', '63mm'],
+    'MaxAperture' : ['4.65625', 'N/A','4.65625', '4.96875','5.0625', '4.65625','4.96875', '4.96875','4.65625', '4.96875','4.65625', '1.75','N/A', '4.96875','1.75', 'N/A','4', '4.96875','4.96875', '4','4.65625', '1/75','4.96875', '4.65625','4.96875', '1.75','3.53.125', '4.96875','4.65625', '4.96875', '4.96875', '4.96875'],
+    'MeteringMode' : ['Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Spot','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern','Pattern', 'Pattern', 'Pattern', 'Pattern'],
+    'FlashMode' : ['No flash, complusory', 'No flash, compulsory','No flash,compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash,compulsory','No flash, compulsory', 'No flash, compulsory','No flash,complusory', 'No flash, compulsory','No flash, compulsory', 'No flash,compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory','No flash, compulsory', 'No flash, compulsory', 'No flash, compulsory', 'No flash, compulsory'],
+    'Description' : ['The birds flying away managed to mirror the line of the trees, making a good composition with leading lines. The dark day made for a lower light level which gives a moody feel to the photograph, and makes the subject appear more silhouette-like', '','', '','', '','', '','', '','', '','', '','', '','', '','', '','', '','', '','', '','', '','', '','', ''],
+    'alt' : ['a landscape image of a flock of birds flying away over some trees on a gloomy day in such a way that they follow the trees shape', 'a portrait image of A girl with long, light brown hair stands behing some shrubbery. The photo is half showing the girl (right) and half showing leaves (left) ','A landscape photo of the top portions of houses at a dull sunset alongside a tree branching into view.', 'A landscape photo of two pigeons perched on a roof top together', 'A landscape photo of a small house sparrow perched on a tiny twig-like branch looking at the camera.','A landscape photo of a Black Lemur climbing down from its apparatus within its enclosure at a wildlife park.', 'A landscape photo of an owl, perched on some stripped wood within its enclosure at a wildlfie park.','a landscape photo taken from below of a flock of birds in flight, caught at such timing where they are all displying their wingspan.', 'A landscape photo of a small black mamoset perched on some stripped wood amongst some foliage within an enclosure of a wildlife park.','a landscape photo of two pelicans perched in some shallow water looking around and grooming themselves. ', 'A landscape photo of a few birds flying from their nest which is tucked away inside a gap between the rocks at Stonghenge.','A landscape photo of a girl with a dream catcher covering her right eye, with the centre of the dream catcher and her ee being alligned.', 'A portrait photograph of some vibrant foliage sheltering to white flowers beneath.','a landscape photo of a small house sparrow, perched among some small branches, seemingly looking off into the distance and out at the world.', 'a landscape photo of a girl with light brain hair, stood behind similar coloured wispy plants.','A portrait photo of a plant with some large dark purple leaves with bright orangey/red tips.', 'A landscape photo of the yellow autumn leaves sitting on the trees and on the ground by a roadside','a landscape photo of raindrops hitting a body of water, distrupting it, creating small circular ripples.', 'a portrait photo of some house during sunrise, nestled slightly behing a tree.','a landscape photo full of lots of various sized plants and greenery.', 'A landscape shot of a small but bright yellow flower growing in a river. On a petal, it hold a small insect.','a landscape photo of a girl holding a dried plant infront of her face, making the plant in focus. there are two stalks in this plant and cross, inline with her left eye.', 'a landscape photo of a red pands sleeping high in the tree tops, draped over branches','A landscape photo of a bright deep green plant with a bright white flower that has water proplets all over its leaves', 'A landscape photo of a seemingly curious young, white, male deer. He is standing in some autumn yellow mixed shrubbery gazing at the people out of frame.','a landscape shot of a shallow lake river that has plenty of overgrown and over hanging greenery along eiher side', 'a portrait photo of a girl with light brown hair standing behind, but seemingly hiding, behind a bright green shrub, covering most of her face (right) leaving only leaves to the left.','A landscape photo of bright yellow autumn leaves are displayed on the trees and of the floor beneath them next to a roadside.', 'A landsacpe photo of some deep green foilage and some young white orchid flowers with everything having little droplets of water atop.','A portrait shot of the inside of a tall greenhouse at kew gardens filled with big, deep green tropical plants', 'a landscape shot of a big Long-Eared Owl looking to the left of the camera as something has caught its eye', 'a landscape shot of a big Long-Eared Owl looking to the left of the camera as something has caught its eye'],
+
+  };
+
+  fillColumn();
+  fillPage();
+
+
+
+  function fillColumn(){
+    for (var i = 0; i < 4; i++){
+      var column = $('<div/>',
+        {
+          class: "column",
+          id: i
+        });
+        $(".row").append(column);
+    }
+
+  }
+
+  function addImage(columnID, imageSRC, value, alt){
+    var image = $('<img/>',
+      {
+        class: "GalleryImg",
+        src: "img/" + imageSRC + ".jpg",
+        val: value
+      });
+      $(image).attr('alt', alt)
+      $("#" + columnID).append(image);
+  }
+
+  function fillPage(){
+    var column = 0;
+    for (var i = 0; i < imageData.img.length; i++ ){
+      addImage(column, imageData.img[i], i, imageData.alt[i]);
+      column++;
+      if (column == 4){column = 0;}
+    }
+  }
+
+
+
+</script>
+  </body>
+</html>

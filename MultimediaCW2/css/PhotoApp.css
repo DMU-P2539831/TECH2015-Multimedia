@@ -1,0 +1,353 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+background-color:rgba(244, 236, 221);
+margin: 0.6em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+header{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+#DarkMode {
+  height: 5vh;
+  float: right;
+  margin-top: -30px;
+  padding-right: 10px;
+}
+/* when dark mode is active */
+.dark-mode {
+  background-color: #181615;
+}
+.dark-mode header{
+color: white;
+}
+.dark-mode  .OpeningContainer{
+color: white;
+}
+.dark-mode .PopOut {
+  background-color: rgb(163, 160, 156, 0.95)
+}
+
+
+#BurgerMenuDefault {
+  height: 5vh;
+  position: relative;
+  right: calc(90vw - 5px);
+  background-color: rgba(244, 236, 221, 0.6);
+  padding: 5px;
+    border-radius: 6px;
+}
+
+nav {
+  text-align: right;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  padding: 20px;
+  left: 90vw;
+  transition: left 0.4s, background-color 0.4s;
+  z-index: 2;
+}
+
+nav.active {
+  left: 0vw;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+nav.active #BurgerMenuDefault {
+  right: calc(90vw - 25px);
+  background-color: rgba(244, 236, 221, 0);
+}
+
+
+.menuItem {
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  font-size: 1.5em;
+  color: white;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+}
+
+
+
+.OpeningContainer{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2em;
+
+}
+
+/*w3 schools - back to top button*/
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 12px; /* Place the button at the bottom of the page */
+  right: calc(50vw - 25px);
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgba(244, 236, 221, 0.6);
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 14px; /* Some padding */
+  border-radius: 6px; /* Rounded corners */
+  font-size: 1em; /* Increase font size */
+  font-weight:bolder;
+   transition: 0.2s;
+}
+
+#myBtn:hover {
+  background-color: rgba(24,22,21, 0.8); /* Adds a dark-grey background on hover */
+  color: white;
+
+}
+
+.GalleryImg {
+  border-radius: 9px;
+  width: 100%;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.GalleryImg:hover{
+  opacity: .80;
+}
+
+
+/*w3 schools Responsive Photo gallery*/
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Creates four equal columns that sit next to each other w3 schools Responsive Photo gallery */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+
+
+.PopOut {
+  background-color: rgb(218, 204, 202, 0.95);
+  border-radius: 8px;
+  position: absolute;
+  z-index: 1; /* Make sure it does not overlap */
+  height: 160vh;
+  width: 93.5vw;
+}
+
+#PhotoTitle {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.PopOutImg {
+  width: 88.5vw;
+  margin: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.Title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.Subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  margin-left: 20px;
+}
+
+.Subset {
+  font-family: 'Raleway', sans-serif;
+  margin-left: 40px;
+  margin-top: -15px;
+}
+
+
+#BtnPopOut {
+  right: calc(13vw - 25px);
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgba(244, 236, 221, 0.6);
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 14px; /* Some padding */
+  border-radius: 6px; /* Rounded corners */
+  font-size: 1em; /* Increase font size */
+  font-weight:bolder;
+   transition: 0.2s;
+}
+#BtnPopOut:hover {
+  background-color: rgba(24,22,21, 0.8); /* Adds a dark-grey background on hover */
+  color: white;
+}
+
+
+
+/* Responsive layout - Other Element adjustments */
+@media screen and (min-width: 800px){
+  header {
+    position: relative;
+    height: auto;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  .menuItem {
+      color: black;
+      font-size: 1.2em;
+      width: auto;
+      text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+      font-weight: bolder;
+  }
+  #BurgerMenuDefault {
+    display: none;
+  }
+  #mainMenu {
+  position: relative;
+  height: auto;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.menuItem:hover {
+  text-decoration: underline;
+}
+
+
+.OpeningContainer{
+  position: relative;
+  height: auto;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-top: 26px;
+  text-align: center;
+}
+
+#DarkMode {
+  height: vh;
+  position:absolute;
+  left: calc(49vw - 20px);
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-top: -4px;
+}
+#DarkMode:hover {
+  cursor: pointer;
+}
+.dark-mode .menuItem {
+  color: white;
+}
+
+/*w3 schools - back to top button*/
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  left: calc(43vw - 20px);
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgba(244, 236, 221, 0.8);
+  cursor: pointer; /* Add a mouse pointer on hover */
+  width: 15vw;
+  border-radius: 6px; /* Rounded corners */
+  font-size: 1.5em; /* Increase font size */
+  font-weight:bolder;
+}
+
+.PopOut {
+  right: calc(20vw - 10px);
+  width: 60vw;
+}
+.PopOutImg {
+  width: 40vw;
+  margin-left: 200px;
+  margin-right: 1000px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+.Title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  text-align: left;
+margin-left: -20px;
+  display: flex;
+  justify-content: center;
+}
+
+.Subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+margin-left: -20px;
+  display: flex;
+  justify-content: center;
+}
+
+.Subset {
+  font-family: 'Raleway', sans-serif;
+  margin-top: -15px;
+  margin-left: -20px;
+  display: flex;
+  justify-content: center;
+}
+
+
+}
+
+
+/* Responsive layout - photo grid >> makes a two column-layout instead of four columns w3 schools Responsive Photo gallery*/
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - photo grid >> makes the two columns stack on top of each other instead of next to each other - w3 schools Responsive Photo gallery*/
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}

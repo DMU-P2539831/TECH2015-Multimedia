@@ -10,6 +10,9 @@
 <!-- The font below is used for main body text -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+<!-- JQUERY LINK -->
+<script src="jquery.js"></script>
+
 
     <title></title>
   </head>
@@ -20,10 +23,9 @@
 
       <nav id="mainMenu">
         <img id="BurgerMenuDefault" src="icons/BurgerMenuDefault.png" alt="">
-        <a class="menuItem" href="WebApp.html">HOME</a>
+        <a class="menuItem" href="PhotoApp.html">HOME</a>
         <a class="menuItem" href="MeetThePhotographer.html">MEET THE PHOTOGRAPHER</a>
-        <a class="menuItem" href="">INFORMATION</a>
-        <a class="menuItem" href="">SETTINGS</a>
+        <a class="menuItem" href="https://linktr.ee/P2539831">LINKTREE</a>
       </nav>
 
       <img id="DarkMode" onclick="myFunction()" src="icons/DarkMode.png" alt="">
@@ -34,7 +36,7 @@
       <h2> MEET THE PHOTOGRAPHER </h2>
 
       <div id="MTPVideo">
-      <video width="3250Vvw" height="250vh" autoplay muted loop>
+      <video width="385vw" height="285vh" autoplay muted loop>
         <source src="vid/MTPVideo.mp4">
           <source src="vid/MTPVideo.webm">
             Your browser does not support the video tag.
@@ -50,22 +52,51 @@
 <blockquote>
   <p>"Hello! My name's Amber; <br>Currently at the time of writing (April 2021) I am a second year, going on third, Media Production student at DeMontfort University. I developed am interest in photography from a young age. As someone with a creative mind, my enjoyment of creative subjects and tasks comes easily and is plentiful allowing photography to fall right into my lap! <br><br>I prefer photography over other creative fields because I feel comfortable an confident in my seemingly natural abilities to see and capture a shot and experiment. Things like art take a lot more fine-tuned skill and patience that I am not exactly well versed in, although I enjoy it - I don't feel as good at it. <br><br>I also enjoy photography because you capture real moments that happen as opposed to a rendition of or representaion of such. <br><br>This is also some reasoning as to why i enjoy my 'genre' of photography. I most often take photos of animals and people in a candid way. Although animals aren't exactly aware of cameras it's nice to catch them doing their own thing in their natural or simulated natural environments. With people being more aware of cameras and having more emotional understanding, they often feel awkward when posing for a photo - but with candid photography this is eliminated. You can capture a natural photo of someone while they're going about themsleves, for instance when they're laughing! <br><br>Although I mainly hire out equipment from  the University, I do also own and use a CanonPowershot, it's a lot less technical and a lot more portable than a DSLR but can still produce similar effects and results!  "</p>
 </blockquote>
+ <br>
+ <br>
 
-      <script>
-      toggleMenu = () => {
-        let menu = document.getElementById("mainMenu");
-          let img = document.getElementById("BurgerMenuDefault");
-        if (menu.classList.contains("active")) {
-          menu.classList.remove("active");
-          img.src= "icons/BurgerMenuDefault.png";
-        } else {
-          menu.classList.add("active");
-          img.src="icons/BurgerMenuOpenWhite.png";
-        }
-      };
+<button onclick="topFunction()" id="myBtn" title="Go to top">▲</button>
 
-      document.getElementById("BurgerMenuDefault").addEventListener("click", toggleMenu);
+<script>
 
+  toggleMenu = () => {
+    let menu = document.getElementById("mainMenu");
+      let img = document.getElementById("BurgerMenuDefault");
+    if (menu.classList.contains("active")) {
+      menu.classList.remove("active");
+      img.src= "icons/BurgerMenuDefault.png";
+    } else {
+      menu.classList.add("active");
+      img.src="icons/BurgerMenuOpenWhite.png";
+    }
+  };
+
+  document.getElementById("BurgerMenuDefault").addEventListener("click", toggleMenu);
+
+  function myFunction() {
+     var element = document.body;
+     element.classList.toggle("dark-mode");
+     $(".menuitem").toggle("dark-mode");
+  }
+  //Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 400px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
       </script>
   </body>
 </html>
