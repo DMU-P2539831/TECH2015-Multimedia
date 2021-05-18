@@ -33,6 +33,19 @@ header{
 .dark-mode header{
 color: white;
 }
+}
+.dark-mode .menuItem {
+  color: white;
+}
+.dark-mode h2 {
+  color: white;
+}
+.dark-mode #About {
+  color: white;
+}
+.dark-mode blockquote {
+  color: white;
+}
 
 #BurgerMenuDefault {
   height: 5vh;
