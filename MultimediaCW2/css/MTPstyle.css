@@ -166,7 +166,7 @@ blockquote {
 #DarkMode {
   height: vh;
   position:absolute;
-  left: calc(43.5vw - 20px);
+  left: calc(49vw - 20px);
   display: flex;
   justify-content: center;
   padding: 0;
